@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2026 at 12:16 PM
+-- Generation Time: Jan 21, 2026 at 02:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,14 @@ CREATE TABLE `cache` (
   `value` mediumtext NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cache`
+--
+
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('laravel-cache-login@gmail.com|127.0.0.1', 'i:1;', 1768997013),
+('laravel-cache-login@gmail.com|127.0.0.1:timer', 'i:1768997013;', 1768997013);
 
 -- --------------------------------------------------------
 
@@ -66,11 +74,22 @@ CREATE TABLE `detail_orders` (
 --
 
 INSERT INTO `detail_orders` (`id`, `order_id`, `tiket_id`, `jumlah`, `subtotal_harga`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1500000.00, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(2, 2, 3, 1, 200000.00, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(3, 3, 4, 2, 600000.00, '2026-01-14 11:21:18', '2026-01-14 11:21:18'),
-(4, 4, 4, 2, 600000.00, '2026-01-16 02:44:42', '2026-01-16 02:44:42'),
-(5, 5, 4, 2, 600000.00, '2026-01-16 02:58:16', '2026-01-16 02:58:16');
+(3, 3, 5, 1, 1500000.00, '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(4, 4, 7, 1, 200000.00, '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(5, 5, 7, 14, 2800000.00, '2026-01-21 04:49:21', '2026-01-21 04:49:21'),
+(6, 6, 8, 3, 900000.00, '2026-01-21 04:51:33', '2026-01-21 04:51:33'),
+(7, 7, 8, 5, 1500000.00, '2026-01-21 04:57:18', '2026-01-21 04:57:18'),
+(8, 8, 8, 3, 900000.00, '2026-01-21 04:59:33', '2026-01-21 04:59:33'),
+(9, 9, 8, 4, 1200000.00, '2026-01-21 05:02:59', '2026-01-21 05:02:59'),
+(10, 10, 8, 185, 55500000.00, '2026-01-21 05:07:29', '2026-01-21 05:07:29'),
+(11, 11, 7, 6, 1200000.00, '2026-01-21 05:14:10', '2026-01-21 05:14:10'),
+(12, 12, 7, 6, 1200000.00, '2026-01-21 05:20:32', '2026-01-21 05:20:32'),
+(13, 13, 5, 8, 12000000.00, '2026-01-21 05:54:00', '2026-01-21 05:54:00'),
+(14, 14, 6, 4, 2000000.00, '2026-01-21 05:54:28', '2026-01-21 05:54:28'),
+(15, 15, 7, 274, 54800000.00, '2026-01-21 05:55:42', '2026-01-21 05:55:42'),
+(16, 16, 5, 7, 10500000.00, '2026-01-21 06:02:07', '2026-01-21 06:02:07'),
+(17, 16, 6, 6, 3000000.00, '2026-01-21 06:02:07', '2026-01-21 06:02:07'),
+(18, 17, 9, 1, 0.00, '2026-01-21 06:25:32', '2026-01-21 06:25:32');
 
 -- --------------------------------------------------------
 
@@ -96,10 +115,10 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `user_id`, `kategori_id`, `judul`, `deskripsi`, `lokasi`, `tanggal_waktu`, `gambar`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Konser Musik Rock', 'Nikmati malam penuh energi dengan band rock ternama.', 'Stadion Utama', '2024-08-15 19:00:00', 'events/konser_rock.jpg', '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(2, 1, 2, 'Pameran Seni Kontemporer', 'Jelajahi karya seni modern dari seniman lokal dan internasional.', 'Galeri Seni Kota', '2024-05-10 10:00:00', 'events/pameran_seni.jpg', '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(3, 1, 3, 'Festival Makanan Internasional', 'Cicipi berbagai hidangan lezat dari seluruh dunia.', 'Taman Kota', '2024-10-05 12:00:00', 'events/festival_makanan.jpg', '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(4, 1, 4, 'haha', 'awdad', 'scsfwe', '2026-01-14 20:57:00', '1768399076.jpg', '2026-01-14 06:57:56', '2026-01-14 10:34:41');
+(4, 7, 5, 'Konser Musik Rock', 'Nikmati malam penuh energi dengan band rock ternama.', 'Stadion Utama', '2024-08-15 19:00:00', 'events/konser_rock.jpg', '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(5, 7, 6, 'Pameran Seni Kontemporer', 'Jelajahi karya seni modern dari seniman lokal dan internasional.', 'Galeri Seni Kota', '2024-05-10 10:00:00', 'events/pameran_seni.jpg', '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(6, 7, 7, 'Festival Makanan Internasional', 'Cicipi berbagai hidangan lezat dari seluruh dunia.', 'Taman Kota', '2024-10-05 12:00:00', 'events/festival_makanan.jpg', '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(7, 7, 5, 'koser dangdut', 'josjis', 'lapangn', '2026-01-21 20:22:00', '1769001794.png', '2026-01-21 06:23:14', '2026-01-21 06:23:14');
 
 -- --------------------------------------------------------
 
@@ -170,11 +189,9 @@ CREATE TABLE `kategoris` (
 --
 
 INSERT INTO `kategoris` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, 'Musik', '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(2, 'Seni', '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(3, 'Festival', '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(4, 'ff', '2026-01-13 10:14:29', '2026-01-13 10:14:29'),
-(15, 'festival jajanan', '2026-01-16 02:55:00', '2026-01-16 02:55:27');
+(5, 'Musik', '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(6, 'Seni', '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(7, 'Festival', '2026-01-21 04:47:03', '2026-01-21 04:47:03');
 
 -- --------------------------------------------------------
 
@@ -193,14 +210,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
-(2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '0001_01_01_000003_create_kategoris_table', 1),
-(5, '0001_01_01_000004_create_events_table', 1),
-(6, '0001_01_01_000005_create_tikets_table', 1),
-(7, '0001_01_01_000006_create_orders_table', 1),
-(8, '0001_01_01_000007_create_detail_orders_table', 1);
+(31, '0001_01_01_000000_create_users_table', 1),
+(32, '0001_01_01_000001_create_cache_table', 1),
+(33, '0001_01_01_000002_create_jobs_table', 1),
+(34, '0001_01_01_000003_create_kategoris_table', 1),
+(35, '0001_01_01_000004_create_events_table', 1),
+(36, '0001_01_01_000005_create_tikets_table', 1),
+(37, '0001_01_01_000006_create_orders_table', 1),
+(38, '0001_01_01_000007_create_detail_orders_table', 1),
+(39, '2026_01_21_064735_create_payment_types_table', 1),
+(40, '2026_01_21_072841_add_payment_type_id_to_orders_table', 1);
 
 -- --------------------------------------------------------
 
@@ -211,6 +230,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `payment_type_id` bigint(20) UNSIGNED DEFAULT NULL,
   `event_id` bigint(20) UNSIGNED NOT NULL,
   `order_date` datetime NOT NULL,
   `total_harga` decimal(10,2) NOT NULL,
@@ -222,12 +242,22 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `event_id`, `order_date`, `total_harga`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, '2024-07-01 14:30:00', 1500000.00, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(2, 2, 2, '2024-07-02 10:15:00', 200000.00, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(3, 2, 3, '2026-01-14 18:21:18', 600000.00, '2026-01-14 11:21:18', '2026-01-14 11:21:18'),
-(4, 2, 3, '2026-01-16 09:44:42', 600000.00, '2026-01-16 02:44:42', '2026-01-16 02:44:42'),
-(5, 2, 3, '2026-01-16 09:58:16', 600000.00, '2026-01-16 02:58:16', '2026-01-16 02:58:16');
+INSERT INTO `orders` (`id`, `user_id`, `payment_type_id`, `event_id`, `order_date`, `total_harga`, `created_at`, `updated_at`) VALUES
+(3, 8, NULL, 4, '2024-07-01 14:30:00', 1500000.00, '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(4, 8, NULL, 5, '2024-07-02 10:15:00', 200000.00, '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(5, 8, NULL, 5, '2026-01-21 11:49:21', 2800000.00, '2026-01-21 04:49:21', '2026-01-21 04:49:21'),
+(6, 8, 21, 6, '2026-01-21 11:51:33', 900000.00, '2026-01-21 04:51:33', '2026-01-21 04:51:33'),
+(7, 8, 21, 6, '2026-01-21 11:57:18', 1500000.00, '2026-01-21 04:57:18', '2026-01-21 04:57:18'),
+(8, 8, 22, 6, '2026-01-21 11:59:33', 900000.00, '2026-01-21 04:59:33', '2026-01-21 04:59:33'),
+(9, 8, 22, 6, '2026-01-21 12:02:59', 1200000.00, '2026-01-21 05:02:59', '2026-01-21 05:02:59'),
+(10, 8, 22, 6, '2026-01-21 12:07:29', 55500000.00, '2026-01-21 05:07:29', '2026-01-21 05:07:29'),
+(11, 8, 21, 5, '2026-01-21 12:14:10', 1200000.00, '2026-01-21 05:14:10', '2026-01-21 05:14:10'),
+(12, 8, 21, 5, '2026-01-21 12:20:32', 1200000.00, '2026-01-21 05:20:32', '2026-01-21 05:20:32'),
+(13, 8, 21, 4, '2026-01-21 12:54:00', 12000000.00, '2026-01-21 05:54:00', '2026-01-21 05:54:00'),
+(14, 8, 21, 4, '2026-01-21 12:54:28', 2000000.00, '2026-01-21 05:54:28', '2026-01-21 05:54:28'),
+(15, 8, 21, 5, '2026-01-21 12:55:42', 54800000.00, '2026-01-21 05:55:42', '2026-01-21 05:55:42'),
+(16, 8, 21, 4, '2026-01-21 13:02:07', 13500000.00, '2026-01-21 06:02:07', '2026-01-21 06:02:07'),
+(17, 8, 22, 7, '2026-01-21 13:25:32', 0.00, '2026-01-21 06:25:32', '2026-01-21 06:25:32');
 
 -- --------------------------------------------------------
 
@@ -240,6 +270,31 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_types`
+--
+
+CREATE TABLE `payment_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment_types`
+--
+
+INSERT INTO `payment_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(21, 'Kartu Kredit', '2026-01-21 04:50:54', '2026-01-21 04:50:54'),
+(22, 'Transfer Bank', '2026-01-21 04:50:54', '2026-01-21 04:50:54'),
+(23, 'E-Wallet', '2026-01-21 04:50:54', '2026-01-21 04:50:54'),
+(24, 'Cicilan', '2026-01-21 04:50:54', '2026-01-21 04:50:54'),
+(25, 'hvghccbknikkj', '2026-01-21 06:01:10', '2026-01-21 06:01:23'),
+(26, 'fjvdfvbkdfj', '2026-01-21 06:20:31', '2026-01-21 06:20:31');
 
 -- --------------------------------------------------------
 
@@ -261,7 +316,21 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('xZ7yL1GRl6ITWVGMpPOx1lcwuOESMcmnG5zHs2iE', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUkc1ZEdpdG52YmtRbXozeHRpdWNBdjhncVBESjZkc1RlY3k4NnZBNyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ldmVudHMvcGFtZXJhbl9zZW5pLmpwZyI7czo1OiJyb3V0ZSI7czoxMToiZXZlbnRzLnNob3ciO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1768557497);
+('fNWf8nrcM8h6F0gdfZuUhl0eHCOrMYgZAHeveGg5', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZHVZTzhWQjFTWFNxenBESUdJbUFNTUdhVElTV1RQU2RJZVdFNnd2cSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MTAzOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvZXZlbnRzLzE/aWQ9MDllNzI4ZTgtNGUyOC00MjM5LThkOTItODAyNDJmM2QzZjUyJnZzY29kZUJyb3dzZXJSZXFJZD0xNzY4OTk2NTk4NTM2IjtzOjU6InJvdXRlIjtzOjExOiJldmVudHMuc2hvdyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1768996599),
+('kcRRbRrRWoAmnYp6QfwoquMJiQ50dseUki8tLbxo', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSUoxa0RReHVOZW13UFNBWEZUVUlPYnp4T1hXaDg3aEc0YWFpMGdQRSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1768998072),
+('kzcVqQ9XjqX3XBZoeXY5bTGhaRtGsgXzpi4G4Vte', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicWVWdjFaQWFmREtLSExJSkhKZEJnSkRrQ0RiYUVUUlFwUmVKb1c2UyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MTAwOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYWRtaW4/aWQ9MDllNzI4ZTgtNGUyOC00MjM5LThkOTItODAyNDJmM2QzZjUyJnZzY29kZUJyb3dzZXJSZXFJZD0xNzY4OTk3Mjg3NjgxIjtzOjU6InJvdXRlIjtzOjE1OiJhZG1pbi5kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1768997288),
+('NS537VzGRLb1bBdVe5tNFplETWLY0MTxTcwOIib2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY3BLYktrV1VPMXU0eVNFNldzT1h6OFplWTU1bUN6S1YyRU5QemVzVSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MTAzOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvZXZlbnRzLzE/aWQ9MDllNzI4ZTgtNGUyOC00MjM5LThkOTItODAyNDJmM2QzZjUyJnZzY29kZUJyb3dzZXJSZXFJZD0xNzY4OTk2NzM1MjQ2IjtzOjU6InJvdXRlIjtzOjExOiJldmVudHMuc2hvdyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1768996735),
+('O9HcT3lB9k6HxWd7eerOrK0PXfPCpxYSWZ1IK6sr', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiT1BIRzY0N21QR2FJalNwRE16MkJmbjRUN1dBUU5raUhYSG1CanVibCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6OTU6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC8/aWQ9MDllNzI4ZTgtNGUyOC00MjM5LThkOTItODAyNDJmM2QzZjUyJnZzY29kZUJyb3dzZXJSZXFJZD0xNzY4OTk4MDY4ODg5IjtzOjU6InJvdXRlIjtzOjQ6ImhvbWUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1768998069),
+('oc7uXGgf5m0VKsOfXGRkOpzcsmqCyfWvgEzjugez', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoibFpKZ1I5UjBxSmc4UVBHVExDQkxqb3hxc1RrVFFCNHJmdjRKelFEWCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1768998086),
+('PIRI0t3C9IYecEmCK6qWQgxNAxOKcZZdt3DkejLu', 8, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS0dxRE9LY0p3bWRudnNKcEdIeUJhVHpYZ2p3Q1BDbGFpRXV3QkdIbSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hcGkvZXZlbnRzLzQvdGlja2V0cyI7czo1OiJyb3V0ZSI7Tjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6ODt9', 1769002035),
+('PnfmAgEiZxgSp0wF80SgBxPJRmHxQlgx5vZZpwfb', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMndCMVFhWjlRb1N5ZTZNZXhndExheUJTQmR2b1pDTjVIb2Uxb21hOCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MTA3OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYWRtaW4vZXZlbnRzP2lkPTA5ZTcyOGU4LTRlMjgtNDIzOS04ZDkyLTgwMjQyZjNkM2Y1MiZ2c2NvZGVCcm93c2VyUmVxSWQ9MTc2ODk5NzMyMDM1OSI7czo1OiJyb3V0ZSI7czoxODoiYWRtaW4uZXZlbnRzLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1768997320),
+('pXzpeKNQRCFnFt6YApGV1aE4SeCaUSDw5nkYY7Pn', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiQ2ZubERvZWFEVTc3NmNGMEQ0c2kweDR5NzhZYmtpeUhxbllmZnk3SyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1768997370),
+('r93IP4thC3GPGmz2LpzzvVjFkd0kdz1qYRlTokpR', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiT3VVdktPS3o4VkhOWnl3MXBCMVRpQm9Rc2x5dzE3VzdKNklsRmhObiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1768997314),
+('ROyGc0WE4lAwgGeDR8teppxf0Qh6tgTGFAtLS5Xj', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYXp2MHpiUm5lN1B6aEcyNVJrVHlPSGppVlZwQU14dXRnb2o3Z1k1byI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hcGkvZXZlbnRzLzUvdGlja2V0cyI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1769000377),
+('V2COqpXykgKqoRyvteV8t8SbLcSOSPMJZoDLtcOV', 8, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWklaekdGU2l6cVJnbmkxUGoyVzNKalVtVjlKWWJYVVI4N0pWY2FJNCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ldmVudHMvZmVzdGl2YWxfbWFrYW5hbi5qcGciO3M6NToicm91dGUiO3M6MTE6ImV2ZW50cy5zaG93Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6ODt9', 1769001935),
+('WD0CXWCASX7sHfNMZKHHRWO01kkKaFa5eCq20b3z', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRTd0UHBmN25wRzRqVllCdng5a0laS3liRDExR0VVNkVjSEY2YnpwQSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1768997288),
+('z8tPJeIaKpv6cIrunVi8CRzpAOPbhL2Ojlupb8tw', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.108.0 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVDFlRzJFTWlNT3EzaXdhRWVOT045RVE2Y2Q2MndmUFhPVzVvRlUweCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1768997321),
+('zwHufmaUGtZIj142cVgjNYXG4zk7rS3GwlTvUT7g', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiR3NyRnlMbkN6ZUFFYjVuMmY0Y3dxejNXdE5zeUNlTWRGOFgzbFJQNiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czo1OiJsb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1768997310);
 
 -- --------------------------------------------------------
 
@@ -284,10 +353,11 @@ CREATE TABLE `tikets` (
 --
 
 INSERT INTO `tikets` (`id`, `event_id`, `tipe`, `harga`, `stok`, `created_at`, `updated_at`) VALUES
-(1, 1, 'premium', 250000.00, 200, '2026-01-11 10:30:12', '2026-01-16 02:56:28'),
-(2, 1, 'reguler', 500000.00, 500, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(3, 2, 'premium', 200000.00, 300, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(4, 3, 'premium', 300000.00, 194, '2026-01-11 10:30:12', '2026-01-16 02:58:16');
+(5, 4, 'premium', 1500000.00, 99999984, '2026-01-21 04:47:03', '2026-01-21 06:02:07'),
+(6, 4, 'reguler', 500000.00, 490, '2026-01-21 04:47:03', '2026-01-21 06:02:07'),
+(7, 5, 'premium', 200000.00, 9999, '2026-01-21 04:47:03', '2026-01-21 06:21:58'),
+(8, 6, 'premium', 300000.00, 0, '2026-01-21 04:47:03', '2026-01-21 05:07:29'),
+(9, 7, 'premium', 0.00, 4, '2026-01-21 06:25:04', '2026-01-21 06:25:32');
 
 -- --------------------------------------------------------
 
@@ -313,8 +383,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `no_hp`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '081234567890', 'admin', NULL, '$2y$12$JTy1AD.UX7Y7Hx0CuJ2BTeSZUW0cCylM9Keala2fiO0nCYR4/zkIu', NULL, '2026-01-11 10:30:12', '2026-01-11 10:30:12'),
-(2, 'User Customer', 'user@gmail.com', '089876543210', 'user', NULL, '$2y$12$PMDNLtRf7x97y3EcBb8N..3rt863Sf8qFuMQYB.q94XZB9B7Kl7rW', NULL, '2026-01-11 10:30:12', '2026-01-11 10:30:12');
+(7, 'Admin', 'admin@gmail.com', '081234567890', 'admin', NULL, '$2y$12$U9UGppbZxzNeY.jQgcdoV.bW0spzIUT6KLH12ApoXC6BlFfcdX0/C', NULL, '2026-01-21 04:47:03', '2026-01-21 04:47:03'),
+(8, 'User Customer', 'user@gmail.com', '089876543210', 'user', NULL, '$2y$12$HG9L.9ryZmhnz1bfLIoF3eY.ykHCp/pWsYSGRsxsLaNmrR8ock4ki', NULL, '2026-01-21 04:47:03', '2026-01-21 04:47:03');
 
 --
 -- Indexes for dumped tables
@@ -387,13 +457,20 @@ ALTER TABLE `migrations`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `orders_user_id_foreign` (`user_id`),
-  ADD KEY `orders_event_id_foreign` (`event_id`);
+  ADD KEY `orders_event_id_foreign` (`event_id`),
+  ADD KEY `orders_payment_type_id_foreign` (`payment_type_id`);
 
 --
 -- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `payment_types`
+--
+ALTER TABLE `payment_types`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sessions`
@@ -425,13 +502,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -449,31 +526,37 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `kategoris`
 --
 ALTER TABLE `kategoris`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `payment_types`
+--
+ALTER TABLE `payment_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tikets`
 --
 ALTER TABLE `tikets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -498,6 +581,7 @@ ALTER TABLE `events`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `orders_payment_type_id_foreign` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_types` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
