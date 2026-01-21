@@ -1,4 +1,4 @@
-<d<div class="drawer-side is-drawer-close:overflow-visible z-10">
+<div class="drawer-side is-drawer-close:overflow-visible z-10">
     <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
     
     <div class="flex min-h-full flex-col items-start bg-base-200 w-64 is-drawer-close:w-14 is-drawer-open:w-80 transition-all duration-300 text-base-content">
@@ -39,6 +39,16 @@
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                     </svg>
                     <span class="is-drawer-close:hidden">Manajemen Event</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->routeIs('admin.payment-types.*') ? 'bg-white shadow rounded-lg' : '' }}">
+                <a href="{{ route('admin.payment-types.index') }}" class="flex gap-4 font-medium" data-tip="Tipe Pembayaran">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span class="is-drawer-close:hidden">Tipe Pembayaran</span>
                 </a>
             </li>
             

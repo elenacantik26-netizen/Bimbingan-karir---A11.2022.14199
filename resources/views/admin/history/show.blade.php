@@ -18,10 +18,23 @@
         </div>
         <div class="card-body lg:w-2/3">
 
+          <!-- Info Pembeli -->
+          <div class="bg-blue-50 p-4 rounded-lg mb-4">
+            <h3 class="font-semibold text-lg mb-2">👤 Informasi Pembeli</h3>
+            <div class="space-y-2">
+              <div><strong>Nama:</strong> {{ $order->user->name }}</div>
+              <div><strong>Email:</strong> {{ $order->user->email }}</div>
+              <div><strong>No. HP:</strong> {{ $order->user->no_hp }}</div>
+            </div>
+          </div>
 
+          <div class="divider"></div>
+
+          <!-- Detail Tiket -->
+          <h3 class="font-semibold text-lg mb-3">🎫 Detail Tiket</h3>
           <div class="space-y-3">
             @foreach($order->detailOrders as $d)
-              <div class="flex justify-between items-center">
+              <div class="flex justify-between items-center border-b pb-2">
                 <div>
                   <div class="font-bold">{{ $d->tiket->tipe }}</div>
                   <div class="text-sm text-gray-500">Qty: {{ $d->jumlah }}</div>
@@ -35,11 +48,18 @@
 
           <div class="divider"></div>
 
-          <div class="flex justify-between items-center">
-            <span class="font-bold">Total</span>
-            <span class="font-bold text-lg">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</span>
-
+          <!-- Metode Pembayaran -->
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-semibold text-lg">💳 Metode Pembayaran</span>
+            <span class="badge badge-info badge-lg">{{ $order->paymentType?->name ?? 'N/A' }}</span>
           </div>
+
+          <!-- Total -->
+          <div class="flex justify-between items-center bg-blue-100 p-4 rounded-lg">
+            <span class="font-bold text-lg">Total</span>
+            <span class="font-bold text-2xl">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</span>
+          </div>
+
           <div class="sm:ml-auto sm:mt-auto sm:mr-0 mx-auto mt-3 flex gap-2">
             <a href="{{ route('admin.histories.index') }}" class="btn btn-primary">Kembali ke Riwayat</a>
           </div>

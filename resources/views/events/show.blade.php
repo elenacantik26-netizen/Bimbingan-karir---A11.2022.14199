@@ -41,9 +41,14 @@
 
                         <div class="mt-4 space-y-4">
                             @forelse($event->tikets as $tiket)
-                            <div class="card card-side shadow-sm p-4 items-center">
+                            <div class="card card-side shadow-sm p-4 items-center {{ $tiket->stok == 0 ? 'opacity-60' : '' }}">
                                 <div class="flex-1">
-                                    <h4 class="font-bold">{{ $tiket->tipe }}</h4>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-bold">{{ $tiket->tipe }}</h4>
+                                        @if($tiket->stok == 0)
+                                            <span class="badge badge-error">Habis</span>
+                                        @endif
+                                    </div>
                                     <p class="text-sm text-gray-500">Stok: <span id="stock-{{ $tiket->id }}">{{ $tiket->stok }}</span></p>
                                     <p class="text-sm mt-2">{{ $tiket->keterangan ?? '' }}</p>
                                 </div>
@@ -53,13 +58,19 @@
                                         {{ $tiket->harga ? 'Rp ' . number_format($tiket->harga, 0, ',', '.') : 'Gratis' }}
                                     </div>
 
-                                    <div class="mt-3 flex items-center justify-end gap-2">
-                                        <button type="button" class="btn btn-sm btn-outline" data-action="dec" data-id="{{ $tiket->id }}" aria-label="Kurangi satu">−</button>
-                                        <input id="qty-{{ $tiket->id }}" type="number" min="0" max="{{ $tiket->stok }}" value="0" class="input input-bordered w-16 text-center" data-id="{{ $tiket->id }}" />
-                                        <button type="button" class="btn btn-sm btn-outline" data-action="inc" data-id="{{ $tiket->id }}" aria-label="Tambah satu">+</button>
-                                    </div>
+                                    @if($tiket->stok == 0)
+                                        <div class="mt-3 p-2 bg-red-50 rounded text-red-600 text-sm font-semibold">
+                                            🚫 Tiket Habis
+                                        </div>
+                                    @else
+                                        <div class="mt-3 flex items-center justify-end gap-2">
+                                            <button type="button" class="btn btn-sm btn-outline" data-action="dec" data-id="{{ $tiket->id }}" aria-label="Kurangi satu">−</button>
+                                            <input id="qty-{{ $tiket->id }}" type="number" min="0" max="{{ $tiket->stok }}" value="0" class="input input-bordered w-16 text-center" data-id="{{ $tiket->id }}" />
+                                            <button type="button" class="btn btn-sm btn-outline" data-action="inc" data-id="{{ $tiket->id }}" aria-label="Tambah satu">+</button>
+                                        </div>
 
-                                    <div class="text-sm text-gray-500 mt-2">Subtotal: <span id="subtotal-{{ $tiket->id }}">Rp 0</span></div>
+                                        <div class="text-sm text-gray-500 mt-2">Subtotal: <span id="subtotal-{{ $tiket->id }}">Rp 0</span></div>
+                                    @endif
                                 </div>
                             </div>
                             @empty
@@ -102,12 +113,25 @@
                     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
                 <h3 class="font-bold text-lg">Konfirmasi Pembelian</h3>
-                <div class="mt-4 space-y-2 text-sm">
+                <div class="mt-4 space-y-4 text-sm">
                     <div id="modalItems">
                         <p class="text-gray-500">Belum ada item.</p>
                     </div>
 
                     <div class="divider"></div>
+                    
+                    <div>
+                        <label class="block font-semibold mb-2">Metode Pembayaran</label>
+                        <select id="paymentTypeSelect" class="select select-bordered w-full">
+                            <option value="">-- Pilih Metode Pembayaran --</option>
+                            @forelse($paymentTypes ?? [] as $payment)
+                                <option value="{{ $payment->id }}">{{ $payment->name }}</option>
+                            @empty
+                                <option disabled>Tidak ada metode pembayaran</option>
+                            @endforelse
+                        </select>
+                    </div>
+
                     <div class="flex justify-between items-center">
                         <span class="font-bold">Total</span>
                         <span class="font-bold text-lg" id="modalTotal">Rp 0</span>
@@ -139,7 +163,7 @@
                     price: {{ $tiket->harga ?? 0 }},
                     stock: {{ $tiket->stok }},
                     tipe: "{{ e($tiket->tipe) }}"
-                },
+                }{{ !$loop->last ? ',' : '' }}
                 @endforeach
             };
 
@@ -147,6 +171,51 @@
             const summaryTotalEl = document.getElementById('summaryTotal');
             const selectedListEl = document.getElementById('selectedList');
             const checkoutButton = document.getElementById('checkoutButton');
+
+            function updateStockDisplay(ticketId) {
+                const stockEl = document.getElementById('stock-' + ticketId);
+                const qtyInput = document.getElementById('qty-' + ticketId);
+                const ticketCard = document.querySelector(`[data-id="${ticketId}"]`)?.closest('.card') || qtyInput?.closest('.card');
+                if (!ticketCard) return;
+
+                const stock = tickets[ticketId].stock;
+                if (stockEl) stockEl.textContent = stock;
+
+                // Find the right-side div with controls or message
+                const rightDiv = ticketCard.querySelector('.w-44');
+                if (!rightDiv) return;
+
+                if (stock === 0) {
+                    // Show "Habis" state
+                    ticketCard.classList.add('opacity-60');
+                    // Hide all input controls
+                    const controlsDiv = rightDiv.querySelector('[data-action="inc"]')?.parentElement;
+                    if (controlsDiv) controlsDiv.style.display = 'none';
+                    
+                    // Hide subtotal
+                    const subtotalDiv = rightDiv.querySelector('[id^="subtotal-"]')?.parentElement;
+                    if (subtotalDiv) subtotalDiv.style.display = 'none';
+                    
+                    // Show habis message
+                    const habisDiv = rightDiv.querySelector('.text-red-600');
+                    if (habisDiv) habisDiv.style.display = 'block';
+                } else {
+                    // Show normal state
+                    ticketCard.classList.remove('opacity-60');
+                    
+                    // Show input controls
+                    const controlsDiv = rightDiv.querySelector('[data-action="inc"]')?.parentElement;
+                    if (controlsDiv) controlsDiv.style.display = 'flex';
+                    
+                    // Show subtotal
+                    const subtotalDiv = rightDiv.querySelector('[id^="subtotal-"]')?.parentElement;
+                    if (subtotalDiv) subtotalDiv.style.display = 'block';
+                    
+                    // Hide habis message
+                    const habisDiv = rightDiv.querySelector('.text-red-600');
+                    if (habisDiv) habisDiv.style.display = 'none';
+                }
+            }
 
             function updateSummary() {
                 let totalQty = 0;
@@ -252,25 +321,36 @@
                 const btn = document.getElementById('confirmCheckout');
                 const originalText = btn.textContent; // Simpan teks asli
                 
-                btn.setAttribute('disabled', 'disabled');
-                btn.textContent = 'Memproses...';
-
-                // gather items
-                const items = [];
-                Object.values(tickets).forEach(t => {
-                    const qty = Number(document.getElementById('qty-' + t.id).value || 0);
-                    if (qty > 0) items.push({
-                        tiket_id: t.id,
-                        jumlah: qty
-                    });
-                });
-
-                if (items.length === 0) {
-                    alert('Tidak ada tiket dipilih');
-                    btn.removeAttribute('disabled');
-                    btn.textContent = originalText;
+                // Validasi payment type
+                const paymentTypeId = document.getElementById('paymentTypeSelect').value;
+                if (!paymentTypeId) {
+                    alert('Silakan pilih metode pembayaran');
                     return;
                 }
+                
+                // gather items dengan format yang benar (tickets)
+                const ticketsList = [];
+                Object.values(tickets).forEach(t => {
+                    const qty = Number(document.getElementById('qty-' + t.id).value || 0);
+                    if (qty > 0) {
+                        // Validasi stok real-time
+                        if (qty > t.stock) {
+                            throw new Error(`Stok tiket '${t.tipe}' tidak cukup. Tersedia: ${t.stock}, Diminta: ${qty}`);
+                        }
+                        ticketsList.push({
+                            id: t.id,
+                            quantity: qty
+                        });
+                    }
+                });
+
+                if (ticketsList.length === 0) {
+                    alert('Tidak ada tiket dipilih');
+                    return;
+                }
+
+                btn.setAttribute('disabled', 'disabled');
+                btn.textContent = 'Memproses...';
 
                 try {
                     const res = await fetch("{{ route('orders.store') }}", {
@@ -283,7 +363,8 @@
                         },
                         body: JSON.stringify({
                             event_id: {{ $event->id }},
-                            items
+                            payment_type_id: paymentTypeId,
+                            tickets: ticketsList
                         })
                     });
 
@@ -307,6 +388,31 @@
 
             // init
             updateSummary();
+
+            // Poll untuk update stock setiap 5 detik (jika ada perubahan dari admin atau user lain)
+            setInterval(async () => {
+                try {
+                    const res = await fetch(`/api/events/{{ $event->id }}/tickets`, {
+                        headers: {
+                            'Accept': 'application/json',
+                        }
+                    });
+                    if (!res.ok) return;
+                    
+                    const data = await res.json();
+                    // Update tickets object dengan stock terbaru
+                    Object.values(tickets).forEach(ticket => {
+                        const updated = data.find(t => t.id === ticket.id);
+                        if (updated && updated.stock !== ticket.stock) {
+                            ticket.stock = updated.stock;
+                            // Update display
+                            updateStockDisplay(ticket.id);
+                        }
+                    });
+                } catch (e) {
+                    // Ignore errors on polling
+                }
+            }, 5000);
         })();
     </script>
 </x-layouts.app>

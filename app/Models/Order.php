@@ -17,8 +17,10 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'event_id',
+        'payment_type_id', // <--- WAJIB ADA (Agar pilihan user tersimpan)
         'order_date',
         'total_harga',
+        'status',
     ];
 
     public function user()
@@ -26,15 +28,15 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function tikets()
-    {
-        return $this->belongsToMany(Tiket::class, 'detail_orders')
-            ->withPivot('jumlah', 'subtotal_harga');
-    }
-
     public function event()
     {
         return $this->belongsTo(Event::class, 'event_id');
+    }
+
+    // Relasi ke Payment Type
+    public function paymentType()
+    {
+        return $this->belongsTo(PaymentType::class);
     }
 
     public function detailOrders()

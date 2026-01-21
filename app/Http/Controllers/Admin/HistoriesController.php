@@ -10,12 +10,12 @@ class HistoriesController extends Controller
 {
     public function index()
     {
-        $histories = Order::latest()->get();
+        $histories = Order::with(['user', 'event', 'paymentType'])->latest()->get();
         return view('admin.history.index', compact('histories'));
     }
     public function show(string $history)
     {
-        $order = Order::findOrFail($history);
+        $order = Order::with(['detailOrders.tiket', 'user', 'event', 'paymentType'])->findOrFail($history);
         return view('admin.history.show', compact('order'));
     }    
 }

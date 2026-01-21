@@ -283,7 +283,8 @@
             document.getElementById("delete_ticket_id").value = id;
 
             // Set action dengan parameter ID
-            form.action = `/admin/tickets/${id}`;
+            const baseRoute = "{{ route('admin.tickets.destroy', '__ID__') }}".replace('__ID__', id);
+            form.action = baseRoute;
             delete_modal.showModal();
         }
 
@@ -299,8 +300,9 @@
             document.getElementById("edit_harga").value = harga;
             document.getElementById("edit_stok").value = stok;
 
-            // Set action dengan parameter ID
-            form.action = `/admin/tickets/${id}`;
+            // Set action dengan parameter ID menggunakan Laravel route helper
+            const baseRoute = "{{ route('admin.tickets.update', '__ID__') }}".replace('__ID__', id);
+            form.action = baseRoute;
             edit_ticket_modal.showModal();
         }
     </script>
